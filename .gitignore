@@ -4,18 +4,25 @@
 #
 /[Ll]ibrary/
 /[Ll]ibrary/*
+/Library/*
 /[Tt]emp/
 /[Tt]emp/*
+/Temp/*
 /[Oo]bj/
 /[Oo]bj/*
+/Obj/*
 /[Bb]uild/
 /[Bb]uild/*
+/Build/*
 /[Bb]uilds/
 /[Bb]uilds/*
+/Build/*
 /[Ll]ogs/
 /[Ll]ogs/*
+/Logs/*
 /[Uu]ser[Ss]ettings/
 /[Uu]ser[Ss]ettings/*
+/UserSettings/*
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
