@@ -19,8 +19,10 @@ MonoBehaviour:
     - Assets/TrashMove.cs
     - Assets/TrashMove.cs.meta
     - Assets/trashSpawner.cs
+    - ProjectSettings/EditorBuildSettings.asset
+    - ProjectSettings/UnityConnectSettings.asset
     - 
-    m_Values: 000000000000
+    m_Values: 0000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
