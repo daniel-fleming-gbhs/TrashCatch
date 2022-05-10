@@ -14,15 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
+    - Assets/New Palette.prefab
+    - Assets/New Palette.prefab.meta
     - Assets/PlayerController.cs
     - Assets/Scenes/MainScene.unity
+    - Assets/Spirtes.meta
+    - Assets/Spirtes/Water.anim
+    - Assets/Spirtes/Water.anim.meta
+    - Assets/Spirtes/Water.png
+    - Assets/Spirtes/Water.png.meta
+    - Assets/Spirtes/Water_0.controller
+    - Assets/Spirtes/Water_0.controller.meta
     - Assets/TrashMove.cs
     - Assets/TrashMove.cs.meta
     - Assets/trashSpawner.cs
     - ProjectSettings/EditorBuildSettings.asset
     - ProjectSettings/UnityConnectSettings.asset
     - 
-    m_Values: 0000000000000000
+    m_Values: 0000000000000000000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
