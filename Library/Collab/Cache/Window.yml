@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleSelectedItems:
     m_Keys:
-    - Assets/New Palette.prefab
-    - Assets/New Palette.prefab.meta
     - Assets/PlayerController.cs
     - Assets/Scenes/MainScene.unity
     - Assets/Spirtes.meta
@@ -25,6 +23,8 @@ MonoBehaviour:
     - Assets/Spirtes/Water.png.meta
     - Assets/Spirtes/Water_0.controller
     - Assets/Spirtes/Water_0.controller.meta
+    - Assets/Spirtes/waterBottle.png
+    - Assets/Spirtes/waterBottle.png.meta
     - Assets/TrashMove.cs
     - Assets/TrashMove.cs.meta
     - Assets/trashSpawner.cs
