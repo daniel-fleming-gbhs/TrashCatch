@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 2.5f;
     private Vector3 target;
     private Vector2 difference, force;
+    public GameObject sprite;
 
     public Text scoreDisplay;
     public int Score
@@ -57,7 +58,11 @@ public class PlayerController : MonoBehaviour
                 // to avoid jitter
                 if (magnitude(difference) > 0.25f)
                     rb2d.AddForce(force * Mathf.Clamp(magnitude(difference), 1, 3) * speed); // scale the speed based on where the cursor is
+
+                sprite.transform.rotation = Quaternion.Euler(force);
             }
+            
+
         }
 
         // cap the velocity with the maxSpeed to avoid moving the character too fast

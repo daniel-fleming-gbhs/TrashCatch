@@ -17,6 +17,12 @@ MonoBehaviour:
     - Assets/PlayerController.cs
     - Assets/Scenes/MainScene.unity
     - Assets/Spirtes.meta
+    - Assets/Spirtes/Swim.anim
+    - Assets/Spirtes/Swim.anim.meta
+    - Assets/Spirtes/Swim.png
+    - Assets/Spirtes/Swim.png.meta
+    - Assets/Spirtes/Swim_0.controller
+    - Assets/Spirtes/Swim_0.controller.meta
     - Assets/Spirtes/Water.anim
     - Assets/Spirtes/Water.anim.meta
     - Assets/Spirtes/Water.png
@@ -27,11 +33,13 @@ MonoBehaviour:
     - Assets/Spirtes/waterBottle.png.meta
     - Assets/TrashMove.cs
     - Assets/TrashMove.cs.meta
+    - Assets/swim.png
+    - Assets/swim.png.meta
     - Assets/trashSpawner.cs
     - ProjectSettings/EditorBuildSettings.asset
     - ProjectSettings/UnityConnectSettings.asset
     - 
-    m_Values: 0000000000000000000000000000000000
+    m_Values: 00000000000000000000000000000000000000000000000000
   RevisionSummary: 
   ChangesSearchValue: 
   SelectedHistoryRevision: 
