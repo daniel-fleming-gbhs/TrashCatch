@@ -4,6 +4,8 @@
 #
 Library/
 Library/*
+Library/Artifact/
+Library/Artifact/*
 /[Tt]emp/
 /[Tt]emp/*
 /[Oo]bj/
