@@ -12,31 +12,23 @@ public class PlayerController : MonoBehaviour
     private Vector2 difference, force;
     public GameObject sprite;
 
-    public Text scoreDisplay;
-    public int Score
-    {
-        get
-        {
-            return _Score;
-        }
-        set
-        {
-            _Score = value;
-            Debug.Log(_Score);
-            scoreDisplay.text = $"Score: {_Score}";
-        }
-    }
-    private int _Score;
+    public GameObject WinText;
+    public GameObject FailText;
+
+    public bool gameLoopActive = true;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        GameState.player = this;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!gameLoopActive) return;
+
         // Add key and controller inputs
         rb2d.AddForce(Input.GetAxis("Horizontal") * speed * Vector2.right);
         rb2d.AddForce(Input.GetAxis("Vertical") * speed * Vector2.up);
@@ -61,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
                 sprite.transform.rotation = Quaternion.Euler(force);
             }
-            
-
         }
 
         // cap the velocity with the maxSpeed to avoid moving the character too fast
@@ -71,12 +61,17 @@ public class PlayerController : MonoBehaviour
             Mathf.Sign(rb2d.velocity.y) * Mathf.Min(Mathf.Abs(rb2d.velocity.y), maxSpeed)
             );
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.collider.name.Contains("Trash"))
-            return;
-        Destroy(collision.collider.gameObject);
-        Score++;
+
+    public void fail() {
+        GameObject.Find("Object Spawner").SetActive(false);
+        gameLoopActive = false;
+
+        FailText.SetActive(true);
+    }
+
+    public void win() {
+        gameLoopActive = false;
+        WinText.SetActive(true);
     }
 
     private Vector2 Normalize(Vector2 vector) => new Vector2(vector.x / magnitude(vector), vector.y / magnitude(vector));
