@@ -4,6 +4,8 @@
 #
 /[Ll]ibrary/
 /[Ll]ibrary/*
+/Library/
+/Library*
 /[Tt]emp/
 /[Tt]emp/*
 /[Oo]bj/
