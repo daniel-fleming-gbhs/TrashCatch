@@ -65,7 +65,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 48
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,6 +106,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -115,8 +127,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +146,10 @@ TextureImporter:
       name: Swim_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 24
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +167,10 @@ TextureImporter:
       name: Swim_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +188,10 @@ TextureImporter:
       name: Swim_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 72
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +209,10 @@ TextureImporter:
       name: Swim_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 96
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +230,10 @@ TextureImporter:
       name: Swim_5
       rect:
         serializedVersion: 2
-        x: 80
+        x: 120
         y: 0
-        width: 16
-        height: 30
+        width: 24
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,6 +243,132 @@ TextureImporter:
       bones: []
       spriteID: ac056fb89fbe969e0800000000000000
       internalID: -1627510333290164022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d370b82bd1df5c248bbbb5f4939efeb5
+      internalID: 140064933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_7
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d511a8c3d01dba4c96af69c2ae7478b
+      internalID: -487557091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea9e60a95c00d94588f5b9a8b8f0bca
+      internalID: -885927093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_9
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fb243ce38cf894aa59bfe786743ed9
+      internalID: -1221627936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f3574758ffb6d49807cb38cb08b4f1
+      internalID: 2010691635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Swim_11
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0474b7b912b7c49409a7f989afca557a
+      internalID: -1753416285
       vertices: []
       indices: 
       edges: []
@@ -246,11 +384,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Swim_10: 2010691635
       Swim_0: 894768925919314059
       Swim_5: -1627510333290164022
       Swim_1: -7189252364402166586
       Swim_2: 8938833530780287046
+      Swim_6: 140064933
+      Swim_7: -487557091
+      Swim_9: -1221627936
       Swim_3: 3338013675985658581
+      Swim_11: -1753416285
+      Swim_8: -885927093
       Swim_4: -4301711637799007457
   spritePackingTag: 
   pSDRemoveMatte: 0
