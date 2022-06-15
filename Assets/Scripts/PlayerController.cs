@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,9 +9,11 @@ public class PlayerController : MonoBehaviour
 
     // The game object for the UI that contains the win screen.
     private GameObject winUI;
+    private GameObject winUIText;
 
     // The game object for the UI that contains the fail screen.
     private GameObject failUI;
+    private GameObject failUIText;
     
     // The (constant) maximum speed the player can travel. This is used to cap acceleration.
     private const float maxMovementSpeed = 2.5f;
@@ -28,12 +32,15 @@ public class PlayerController : MonoBehaviour
         
         // Set the player variable in the (static) GameState class, so that all functions can access this
         // instance of this class.
-        GameState.player = this;
+        MainMenu.ResetGameStateClass(this, GameState.level);
 
         // Gets and sets the UI for the win and fail screens.
         winUI = GameObject.Find("UI/Win");
+        winUIText = GameObject.Find("UI/Win/Text");
         winUI.SetActive(false);
+
         failUI = GameObject.Find("UI/Fail");
+        failUIText = GameObject.Find("UI/Fail/Text");
         failUI.SetActive(false);
     }
 
@@ -109,6 +116,19 @@ public class PlayerController : MonoBehaviour
 
         // Set the fail screen UI to active so it can be seen to tell the user they have lost.
         winUI.SetActive(true);
+        winUI.GetComponent<Fade>().FadeTo();
+        winUIText.GetComponent<Text>().text = $"LEVEL {GameState.level + 1} COMPLETED!";
+        winUIText.GetComponent<Fade>().FadeToText();
+        StartCoroutine(WinUITimeOut());
+    }
+
+    IEnumerator WinUITimeOut()
+    {
+        yield return new WaitForSeconds(4);
+        GameState.level++;
+        Fade fadeObject = GameObject.Find("UI/FadePanel").GetComponent<Fade>();
+        fadeObject.sceneName = "GameScene";
+        fadeObject.FadeTo();
     }
 
     // Normalize returns a normalized (2D) vector which is where the co-ordinates summed together equals 1.

@@ -14,6 +14,11 @@ public class TrashMove : MonoBehaviour
     {
         // Set the speed to a speed within the range of speeds.
         thisTrashSpeed = Random.Range(GameState.minTrashSpeed, GameState.maxTrashSpeed);
+        
+        if (GameState.isInMenu)
+        {
+            thisTrashSpeed = MainMenu.backgroundTrashSpeed;
+        }
     }
 
     // Update is a method called once per frame.
@@ -47,6 +52,10 @@ public class TrashMove : MonoBehaviour
         {
             // If the object collided with the trash killer.
             case "Trash Killer":
+                if (GameState.isInMenu)
+                {
+                    break;
+                }
                 // Decrements the player's lives.
                 GameState.currentLives--;
                 

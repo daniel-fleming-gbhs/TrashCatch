@@ -5,9 +5,6 @@ public class ObjectSpawner : MonoBehaviour
     // The array of potential prefabs.
     public GameObject[] possiblePrefabs;
 
-    // The decimal (0-1) chance of a given spawn tick spawning trash.
-    public float chanceToSpawn;
-
     // The time between object spawn ticks (seconds).
     public float timeBetweenObjectSpawnTicks;
 
@@ -32,7 +29,7 @@ public class ObjectSpawner : MonoBehaviour
             return;
         
         // If the spawn chance fails skip the rest of the code.
-        if (Random.Range(0, 1) > chanceToSpawn)
+        if (Random.Range(0, 1) > GameState.trashSpawnChance && !GameState.isInMenu)
             return;
         
         // Generates a random index of the prefabs array, gets a copy of the prefab.
