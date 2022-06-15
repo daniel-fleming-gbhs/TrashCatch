@@ -46,7 +46,44 @@ public class ImageHandler : MonoBehaviour
         catch (IndexOutOfRangeException e)
         {
             // Print an error to the console for debugging and handling purposes.
-            Debug.LogError($"Sprite[] sprites does not have any elements!\n{e}");
+            Debug.LogError($"Sprite[] framesOfSprite does not have any elements!\n{e}");
+        }
+    }
+
+    // Sets the current sprite to a given number.
+    public void SetSpriteTo(int spriteNumber)
+    {
+        try
+        {
+            // Update the current Active Sprite to the new Sprite Number.
+            currentActiveSprite = spriteNumber;
+
+            // Update the sprite.
+            imageToChange.sprite = framesOfSprite[currentActiveSprite];
+        }
+        catch (IndexOutOfRangeException e)
+        {
+            Debug.LogError($"Sprite[] framesOfSprite does not have {spriteNumber} elements!\n{e}");
+
+            if (framesOfSprite.Length > 0)
+            {
+                // Sets the currentActiveSprite number to a number that is within the range of the length of array of sprites.
+                currentActiveSprite = currentActiveSprite % framesOfSprite.Length;
+
+                // Then re-runs the function with the new number that is definitely in bounds.
+                SetSpriteTo(currentActiveSprite);
+            }
+        }
+    }
+
+    public static void UpdateSpriteFont(int targetNumber, ImageHandler[] DigitHandlers)
+    {
+        for (int powersOfTen = 0; powersOfTen < DigitHandlers.Length; powersOfTen++)
+        {
+            int digitAtPower = (int)(targetNumber / Math.Pow(10, powersOfTen));
+            digitAtPower = digitAtPower % 10;
+
+            DigitHandlers[powersOfTen].SetSpriteTo(digitAtPower);
         }
     }
 }

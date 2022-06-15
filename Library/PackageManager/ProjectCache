@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637901774356738676
-    m_Hash: 1990103693
+      ticks: 637902799928517572
+    m_Hash: 3677654258
   m_LockFileStatus:
     m_FilePath: D:/Documents/Coding/Unity/TrashCatch/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637901775336319843
-    m_Hash: 1198766693
+      ticks: 637902799928517572
+    m_Hash: 4244520646
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

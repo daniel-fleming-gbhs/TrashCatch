@@ -37,11 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\TrashMove.cs" />
+     <Compile Include="Assets\Scripts\WorldBoxAdjuster.cs" />
      <Compile Include="Assets\Scripts\GameState.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ImageHandler.cs" />
-     <Compile Include="Assets\Scripts\WorldBoxAdjuster.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\NumberHandler.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Program Files (x86)\Unity\2021.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

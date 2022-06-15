@@ -67,9 +67,9 @@ public class TrashMove : MonoBehaviour
                 GameState.score++;
 
                 // Update the score UI.
-                GameObject scoreUI = GameObject.Find("UI/Score");
-                Text scoreText = scoreUI.GetComponent<Text>();
-                scoreText.text = $"Score: {GameState.score}";
+                GameObject scoreUI = GameObject.Find("UI/Score/Digits");
+                NumberHandler scoreText = scoreUI.GetComponent<NumberHandler>();
+                scoreText.UpdateNumbers(GameState.score);
 
                 // If the player has won, run the win function.
                 if (GameState.score >= GameState.targetScore) 
