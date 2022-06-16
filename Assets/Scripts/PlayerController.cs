@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     // The game object for the UI that contains the win screen.
     private GameObject winUI;
-    private GameObject winUIText;
+    private GameObject winUIDigits;
 
     // The game object for the UI that contains the fail screen.
     private GameObject failUI;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private const float moveSpeedMultiplier = 1000;
 
     // The (constant) minimum distance between where the cursor is and the player, for the player to move.
-    private const float minimumMouseMoveDistance = 0.4f;
+    private const float minimumMouseMoveDistance = 0.2f;
 
     // Start is a method that is called before the first frame update.
     private void Start()
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         // Gets and sets the UI for the win and fail screens.
         winUI = GameObject.Find("UI/Win");
-        winUIText = GameObject.Find("UI/Win/Text");
+        winUIDigits = GameObject.Find("UI/Win/LevelDigits");
         winUI.SetActive(false);
 
         failUI = GameObject.Find("UI/Fail");
@@ -104,8 +104,13 @@ public class PlayerController : MonoBehaviour
     }
 
     // DoWin is a method that runs when the player wins, when the player's score reaches the target score.
-    public void DoWin()
+    public void DoLevelWin()
     {
+        if (GameState.level + 1 > 49)
+        {
+            DoGameCompleted();
+        }
+
         // Find the scene's instance of the object spawner game object and sets it to inactive so all leftover objects can no
         // longer be seen.
         GameObject objectSpawner = GameObject.Find("Object Spawner");
@@ -116,13 +121,20 @@ public class PlayerController : MonoBehaviour
 
         // Set the fail screen UI to active so it can be seen to tell the user they have lost.
         winUI.SetActive(true);
-        winUI.GetComponent<Fade>().FadeTo();
-        winUIText.GetComponent<Text>().text = $"LEVEL {GameState.level + 1} COMPLETED!";
-        winUIText.GetComponent<Fade>().FadeToText();
-        StartCoroutine(WinUITimeOut());
+        winUI.GetComponent<FadeUICollection>().FadeTo();
+        winUIDigits.GetComponent<NumberHandler>().UpdateNumbers(GameState.level + 1);
+
+        StartCoroutine(LevelWinUITimeOut());
     }
 
-    IEnumerator WinUITimeOut()
+    public void DoGameCompleted()
+    {
+        Fade fadePanelFade = GameObject.Find("UI/FadePanel").GetComponent<Fade>();
+        fadePanelFade.sceneName = "GameComplete";
+        fadePanelFade.FadeTo();
+    }
+
+    IEnumerator LevelWinUITimeOut()
     {
         yield return new WaitForSeconds(4);
         GameState.level++;

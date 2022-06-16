@@ -34,6 +34,8 @@ public class ImageHandler : MonoBehaviour
     // Increment the current sprite then update the image.
     public void NextSprite()
     {
+        imageToChange = gameObject.GetComponent<Image>();
+
         try
         {   
             // Increment the currentActiveSprite and ensure it is within the range of the array's length.
@@ -53,6 +55,8 @@ public class ImageHandler : MonoBehaviour
     // Sets the current sprite to a given number.
     public void SetSpriteTo(int spriteNumber)
     {
+        imageToChange = gameObject.GetComponent<Image>();
+        
         try
         {
             // Update the current Active Sprite to the new Sprite Number.
@@ -73,17 +77,6 @@ public class ImageHandler : MonoBehaviour
                 // Then re-runs the function with the new number that is definitely in bounds.
                 SetSpriteTo(currentActiveSprite);
             }
-        }
-    }
-
-    public static void UpdateSpriteFont(int targetNumber, ImageHandler[] DigitHandlers)
-    {
-        for (int powersOfTen = 0; powersOfTen < DigitHandlers.Length; powersOfTen++)
-        {
-            int digitAtPower = (int)(targetNumber / Math.Pow(10, powersOfTen));
-            digitAtPower = digitAtPower % 10;
-
-            DigitHandlers[powersOfTen].SetSpriteTo(digitAtPower);
         }
     }
 }

@@ -398,8 +398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 820, y: 440}
+  m_AnchoredPosition: {x: -2.486, y: -3.313}
+  m_SizeDelta: {x: 1101.3553, y: 676.2947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522646737
 MonoBehaviour:
@@ -795,9 +795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00da67d3b1ae3e4da3cbd0a0799e011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 1
+  fadeSpeed: 2
   sceneName: GameScene
-  startFromFade: 0
+  startFromFade: 1
 --- !u!114 &1222456615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -869,7 +869,6 @@ MonoBehaviour:
   - {fileID: 459044862587231720, guid: dcc5cb2fb7a56fe4abc4623689a13c95, type: 3}
   - {fileID: 6753876475826586789, guid: 6f8180fb2924a644199e5300d3b68712, type: 3}
   - {fileID: 4413445909806798957, guid: 93311c02954e6df43a7b6c87902c3d22, type: 3}
-  chanceToSpawn: 1
   timeBetweenObjectSpawnTicks: 1
   startDelay: 0
 --- !u!4 &1273148281
@@ -940,7 +939,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -9,6 +9,10 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (gameObject.name == "WinScreenController")
+        {
+            GameObject.Find("UI/You Win").GetComponent<Fade>().FadeFrom();
+        }
         ResetGameStateClass();
         GameState.isInMenu = true;
     }

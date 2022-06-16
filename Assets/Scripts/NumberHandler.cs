@@ -5,11 +5,17 @@ public class NumberHandler : MonoBehaviour
 {
     public ImageHandler[] digits;
 
-    public void UpdateNumbers(int score)
+    public void UpdateNumbers(int numberToSetTo)
     {
         try
         {
-            ImageHandler.UpdateSpriteFont(score, digits);
+            for (int powersOfTen = 0; powersOfTen < digits.Length; powersOfTen++)
+            {
+                int digitAtPower = (int)(numberToSetTo / Math.Pow(10, powersOfTen));
+                digitAtPower = digitAtPower % 10;
+
+                digits[powersOfTen].SetSpriteTo(digitAtPower);
+            }
         }
         catch (IndexOutOfRangeException e)
         {

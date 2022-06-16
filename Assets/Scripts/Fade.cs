@@ -48,7 +48,7 @@ public class Fade : MonoBehaviour
         float fadeAmount;
         
         while (gameObject.GetComponent<Image>().color.a < 1) {
-            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+            fadeAmount = objectColor.a + ((1 / fadeSpeed) * Time.deltaTime);
 
             objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
             gameObject.GetComponent<Image>().color = objectColor;
@@ -63,7 +63,7 @@ public class Fade : MonoBehaviour
         float fadeAmount;
 
         while (gameObject.GetComponent<Image>().color.a > 0) {
-            fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+            fadeAmount = objectColor.a - ((1 / fadeSpeed) * Time.deltaTime);
 
             objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
             gameObject.GetComponent<Image>().color = objectColor;
@@ -76,7 +76,7 @@ public class Fade : MonoBehaviour
         float fadeAmount;
         
         while (gameObject.GetComponent<Text>().color.a < 1) {
-            fadeAmount = objectColor.a + (fadeSpeed * Time.deltaTime);
+            fadeAmount = objectColor.a + ((1 / fadeSpeed) * Time.deltaTime);
 
             objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
             gameObject.GetComponent<Text>().color = objectColor;
