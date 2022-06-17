@@ -44,8 +44,8 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
-     <Compile Include="Assets\Scripts\ImageHandler.cs" />
      <Compile Include="Assets\Scripts\FadeUICollection.cs" />
+     <Compile Include="Assets\Scripts\ImageHandler.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
