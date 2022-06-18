@@ -21,7 +21,7 @@ public class FadeImage : MonoBehaviour
     {
         // Fade in the audio if it is meant to.
         if (startFromFade)
-            FadeInImage();
+            FadeOutImage();
     }
 
     // Public function that starts an image fade in.

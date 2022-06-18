@@ -45,8 +45,7 @@ public class PlayerController : MonoBehaviour
         failCollection.panel.SetActive(false);
     }
 
-    // FixedUpdate is a method that is called once each frame.
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -65,7 +64,11 @@ public class PlayerController : MonoBehaviour
                 paused.TransitionTo(0);
             }
         }
+    }
 
+    // FixedUpdate is a method that is called once each frame.
+    private void FixedUpdate()
+    {
         // Do not execute the rest of the code if the game loop isn't active.
         if (!GameState.gameLoopActive)
             return;
