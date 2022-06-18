@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,11 +9,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidBody2D;
 
     // The game object for the UI that contains the win screen.
-    private GameObject winUI;
-    private GameObject winUIDigits;
+    private UIAudioCollection winCollection;
 
     // The game object for the UI that contains the fail screen.
-    private GameObject failUI;
+    private UIAudioCollection failCollection;
     private GameObject failUIText;
     
     // The (constant) maximum speed the player can travel. This is used to cap acceleration.
@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     // The (constant) minimum distance between where the cursor is and the player, for the player to move.
     private const float minimumMouseMoveDistance = 0.2f;
 
+    public GameObject settingsMenu;
+    public AudioMixerSnapshot paused;
+    public AudioMixerSnapshot playing;
+
     // Start is a method that is called before the first frame update.
     private void Start()
     {
@@ -32,21 +36,36 @@ public class PlayerController : MonoBehaviour
         
         // Set the player variable in the (static) GameState class, so that all functions can access this
         // instance of this class.
-        MainMenu.ResetGameStateClass(this, GameState.level);
+        MainMenu.ResetGameStateClass(this);
 
-        // Gets and sets the UI for the win and fail screens.
-        winUI = GameObject.Find("UI/Win");
-        winUIDigits = GameObject.Find("UI/Win/LevelDigits");
-        winUI.SetActive(false);
-
-        failUI = GameObject.Find("UI/Fail");
-        failUIText = GameObject.Find("UI/Fail/Text");
-        failUI.SetActive(false);
+        // Gets and sets the UI and Audio for the win and fail screens.
+        winCollection = new UIAudioCollection("UI/Win", "UI/Win/LevelDigits", "Audio/Music");
+        winCollection.panel.SetActive(false);
+        failCollection = new UIAudioCollection("UI/Fail", "UI/Fail/LevelDigits", "Audio/Music");
+        failCollection.panel.SetActive(false);
     }
 
     // FixedUpdate is a method that is called once each frame.
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Flip the active boolean of the settings menu.
+            settingsMenu.SetActive(!settingsMenu.activeSelf);
+
+            // Set the time scale to 1 if 0 and vice versa, and transition to an audio snapshot.
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                playing.TransitionTo(0);
+            }
+            else
+            {
+                Time.timeScale = 0;
+                paused.TransitionTo(0);
+            }
+        }
+
         // Do not execute the rest of the code if the game loop isn't active.
         if (!GameState.gameLoopActive)
             return;
@@ -91,26 +110,34 @@ public class PlayerController : MonoBehaviour
     // DoFail is a method that runs when the player loses, when the player loses all three lives.
     public void DoFail()
     {
-        // Find the scene's instance of the object spawner game object and sets it to inactive so all leftover objects can no
-        // longer be seen.
-        GameObject objectSpawner = GameObject.Find("Object Spawner");
-        objectSpawner.SetActive(false);
+        // The player has lost so reset the level to 0, so the game can be restarted.
+        GameState.level = 0;
 
-        // Disable the game loop so the player can no longer move and no more objects spawn.
-        GameState.gameLoopActive = false;
-
-        // Set the fail screen UI to active so it can be seen to tell the user they have lost.
-        failUI.SetActive(true);
+        // Runs end of level function with a reference to the failCollection.
+        FadeImage fadeObject = GameObject.Find("UI/FadePanel").GetComponent<FadeImage>();
+        fadeObject.sceneName = "GameOver";
+        EndOfLevel(ref failCollection, fadeObject);
     }
 
     // DoWin is a method that runs when the player wins, when the player's score reaches the target score.
     public void DoLevelWin()
     {
-        if (GameState.level + 1 > 49)
+        // Run seperate function and exit this function if the player has reached level 40 (at the end of a level).
+        if (GameState.level + 1 > 39)
         {
             DoGameCompleted();
+            return;
         }
 
+        // Runs end of level function with a reference to the winCollection.
+        FadeImage fadeObject = GameObject.Find("UI/FadePanel").GetComponent<FadeImage>();
+        fadeObject.sceneName = "GameScene";
+        EndOfLevel(ref winCollection, fadeObject);
+    }
+
+    // Generic end of level function that runs to transition to the next level / fail screen.
+    public void EndOfLevel(ref UIAudioCollection collection, FadeImage fadeObject)
+    {
         // Find the scene's instance of the object spawner game object and sets it to inactive so all leftover objects can no
         // longer be seen.
         GameObject objectSpawner = GameObject.Find("Object Spawner");
@@ -119,28 +146,33 @@ public class PlayerController : MonoBehaviour
         // Disable the game loop so the player can no longer move and no more objects spawn.
         GameState.gameLoopActive = false;
 
-        // Set the fail screen UI to active so it can be seen to tell the user they have lost.
-        winUI.SetActive(true);
-        winUI.GetComponent<FadeUICollection>().FadeTo();
-        winUIDigits.GetComponent<NumberHandler>().UpdateNumbers(GameState.level + 1);
+        // Sets the UI to active and fades it in.
+        collection.panel.SetActive(true);
+        collection.uiFadeCollection.FadeIn();
 
-        StartCoroutine(LevelWinUITimeOut());
+        // Increment the level and display it in the UI by updating it.
+        GameState.level++;
+        collection.digitsNumberHandler.UpdateNumbers(GameState.level);
+
+        // Update the fade speeds to match and increases them.
+        fadeObject.fadeSpeed += 2;
+        collection.musicFade.fadeSpeed = fadeObject.fadeSpeed;
+
+        // Fade in the black screen object, and fade the music out.
+        fadeObject.FadeInImage();
+        collection.musicFade.FadeOutAudio();
     }
 
+    // Runs when the player has one the game.
     public void DoGameCompleted()
     {
-        Fade fadePanelFade = GameObject.Find("UI/FadePanel").GetComponent<Fade>();
-        fadePanelFade.sceneName = "GameComplete";
-        fadePanelFade.FadeTo();
-    }
-
-    IEnumerator LevelWinUITimeOut()
-    {
-        yield return new WaitForSeconds(4);
-        GameState.level++;
-        Fade fadeObject = GameObject.Find("UI/FadePanel").GetComponent<Fade>();
-        fadeObject.sceneName = "GameScene";
-        fadeObject.FadeTo();
+        // The player has won so reset the level to 0, so the game can be restarted.
+        GameState.level = 0;
+        
+        // Runs end of level function with a reference to the winCollection.
+        FadeImage fadeObject = GameObject.Find("UI/FadePanel").GetComponent<FadeImage>();
+        fadeObject.sceneName = "GameComplete";
+        EndOfLevel(ref winCollection, fadeObject);
     }
 
     // Normalize returns a normalized (2D) vector which is where the co-ordinates summed together equals 1.
@@ -175,5 +207,40 @@ public class PlayerController : MonoBehaviour
 
         // Returns if both x and y are normal.
         return xIsNormal && yIsNormal;
+    }
+}
+
+// A collection object for the win/lose UI.
+public struct UIAudioCollection
+{
+    // The background gradient panel.
+    public GameObject panel;
+
+    // The level number digits.
+    public GameObject digits;
+
+    // The music object.
+    public GameObject music;
+
+
+    // The collections of UI to batch fade.
+    public FadeUICollection uiFadeCollection;
+
+    // The number handler for the digits.
+    public NumberHandler digitsNumberHandler;
+
+    // The music fader.
+    public FadeAudio musicFade;
+
+    #nullable enable
+    public UIAudioCollection(string panelPath, string digitsPath, string audioPath)
+    {
+        // Set everything to its corresponding parameter / get the child component.
+        this.panel = GameObject.Find(panelPath);
+        this.uiFadeCollection = this.panel.GetComponent<FadeUICollection>();
+        this.digits = GameObject.Find(digitsPath);
+        this.digitsNumberHandler = this.digits.GetComponent<NumberHandler>();
+        this.music = GameObject.Find(audioPath);
+        this.musicFade = this.music.GetComponent<FadeAudio>();
     }
 }

@@ -9,15 +9,27 @@ public class TrashMove : MonoBehaviour
     // Stores the screen width of the last frame.
     private float previousScreenWidth;
 
+    // The audio sorces for the coin related audios
+    private AudioSource coinCollectAudio;
+    private AudioSource missedCoinAudio;
+
     // Start is called before the first frame update.
     private void Start()
     {
         // Set the speed to a speed within the range of speeds.
         thisTrashSpeed = Random.Range(GameState.minTrashSpeed, GameState.maxTrashSpeed);
         
+        // If the game is in the menu.
         if (GameState.isInMenu)
         {
+            // Fix the speed.
             thisTrashSpeed = MainMenu.backgroundTrashSpeed;
+        }
+        else
+        {
+            // Get the audio source objects.
+            coinCollectAudio = GameObject.Find("Audio/CoinCollected").GetComponent<AudioSource>();
+            missedCoinAudio = GameObject.Find("Audio/CoinMissed").GetComponent<AudioSource>();
         }
     }
 
@@ -53,9 +65,10 @@ public class TrashMove : MonoBehaviour
             // If the object collided with the trash killer.
             case "Trash Killer":
                 if (GameState.isInMenu)
-                {
                     break;
-                }
+
+                missedCoinAudio.Play();
+
                 // Decrements the player's lives.
                 GameState.currentLives--;
                 
@@ -72,6 +85,8 @@ public class TrashMove : MonoBehaviour
 
             // If the object collided with the player.
             case "Player":
+                coinCollectAudio.Play();
+
                 // Increment the score.
                 GameState.score++;
 

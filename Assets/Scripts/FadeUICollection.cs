@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class FadeUICollection : MonoBehaviour
 {
-    public Fade[] UIToFade;
+    // The array of UI Components to fade.
+    public FadeImage[] UIToFade;
     
-    public void FadeTo()
+    // Fades in the images.
+    public void FadeIn()
     {
+        // Iterate through all the UI Compenents to fade and fade them.
         for (int i = 0; i < UIToFade.Length; i++)
         {
-            UIToFade[i].FadeTo(); 
+            UIToFade[i].FadeInImage(); 
         }
     }
 
-    public void FadeFrom()
+    // Fades out the images.
+    public void FadeOut()
     {
+        // Iterate through all the UI Compenents to fade and fade them.
         for (int i = 0; i < UIToFade.Length; i++)
         {
-            UIToFade[i].FadeFrom(); 
+            UIToFade[i].FadeOutImage(); 
         }
     }
 }
