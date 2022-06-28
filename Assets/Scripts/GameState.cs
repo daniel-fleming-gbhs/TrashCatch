@@ -18,10 +18,10 @@ public static class GameState
     public static int targetScore => 2 * GameState.level + 20;
 
     // The minimum speed the trash can move at.
-    public static float minTrashSpeed => 0.09f * GameState.level + 2;
+    public static float minTrashSpeed => 0.25f * GameState.level + 2;
 
     // The maximum speed the trash can move at.
-    public static float maxTrashSpeed => 0.09f * GameState.level + 4;
+    public static float maxTrashSpeed => 0.25f * GameState.level + 4;
 
     // The chance for trash to spawn
     public static float trashSpawnChance => Minimum(0.05f * GameState.level + 0.3f, 1); 

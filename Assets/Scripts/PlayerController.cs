@@ -113,20 +113,20 @@ public class PlayerController : MonoBehaviour
     // DoFail is a method that runs when the player loses, when the player loses all three lives.
     public void DoFail()
     {
-        // The player has lost so reset the level to 0, so the game can be restarted.
-        GameState.level = 0;
-
         // Runs end of level function with a reference to the failCollection.
         FadeImage fadeObject = GameObject.Find("UI/FadePanel").GetComponent<FadeImage>();
         fadeObject.sceneName = "GameOver";
         EndOfLevel(ref failCollection, fadeObject);
+
+        // The player has lost so reset the level to 0, so the game can be restarted.
+        GameState.level = 0;
     }
 
     // DoWin is a method that runs when the player wins, when the player's score reaches the target score.
     public void DoLevelWin()
     {
-        // Run seperate function and exit this function if the player has reached level 40 (at the end of a level).
-        if (GameState.level + 1 > 39)
+        // Run seperate function and exit this function if the player has reached level 10 (at the end of a level).
+        if (GameState.level + 1 > 9)
         {
             DoGameCompleted();
             return;
@@ -169,13 +169,13 @@ public class PlayerController : MonoBehaviour
     // Runs when the player has one the game.
     public void DoGameCompleted()
     {
-        // The player has won so reset the level to 0, so the game can be restarted.
-        GameState.level = 0;
-        
         // Runs end of level function with a reference to the winCollection.
         FadeImage fadeObject = GameObject.Find("UI/FadePanel").GetComponent<FadeImage>();
         fadeObject.sceneName = "GameComplete";
         EndOfLevel(ref winCollection, fadeObject);
+
+        // The player has won so reset the level to 0, so the game can be restarted.
+        GameState.level = 0;
     }
 
     // Normalize returns a normalized (2D) vector which is where the co-ordinates summed together equals 1.

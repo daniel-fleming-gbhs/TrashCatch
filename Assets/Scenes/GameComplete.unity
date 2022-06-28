@@ -522,9 +522,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FadeImage, Assembly-CSharp
-        m_MethodName: FadeInImage
+      - m_Target: {fileID: 689332642}
+        m_TargetAssemblyTypeName: FadeAudio, Assembly-CSharp
+        m_MethodName: FadeOutAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -534,9 +534,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FadeAudio, Assembly-CSharp
-        m_MethodName: FadeOutAudio
+      - m_Target: {fileID: 1222456617}
+        m_TargetAssemblyTypeName: FadeImage, Assembly-CSharp
+        m_MethodName: FadeInImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
